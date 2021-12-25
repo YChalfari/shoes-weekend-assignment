@@ -1,0 +1,17 @@
+.main {
+  width: 100%;
+  display: flex;
+}
+.shoes-container {
+  padding: 2vmin;
+  display: flex;
+  flex-direction: column;
+  gap: 5vmin;
+  width: 45%;
+}
+.center {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}

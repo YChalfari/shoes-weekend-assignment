@@ -1,0 +1,21 @@
+.shoe-card {
+  font-size: 0.8rem;
+  border: 1px solid #c7c4c4;
+  padding: 2vmin;
+  border-radius: 5px;
+}
+.shoe-card-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.shoe-card img {
+  margin-bottom: 2vmin;
+  max-width: 90%;
+}
+.buttons-wrap {
+  margin-top: 2vmin;
+  display: flex;
+  justify-content: space-around;
+}
