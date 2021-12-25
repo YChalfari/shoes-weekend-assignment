@@ -3,15 +3,15 @@ import "./ShoeCard.css";
 import Button from "./Button";
 
 const ShoeCard = (props) => {
-  const { id, price, description, model, color, size } = props.shoe;
+  const { price, description, model, color, size } = props.shoe;
   const listDisplay = { model, description, size, color, price };
   const renderList = () => {
-    return Object.entries(listDisplay).map((entry) => {
+    return Object.entries(listDisplay).map((entry, i) => {
       return (
-        <>
+        <div key={i}>
           <h4>{`${entry[0]}: `} </h4>
           <span className="desc"> {entry[1]}</span>
-        </>
+        </div>
       );
     });
   };

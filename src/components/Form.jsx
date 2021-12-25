@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "./Input";
-import Button from "./Button";
+
 class Form extends React.Component {
   state = {
     model: (this.props.editing && this.props.editing.model) || "",
@@ -11,25 +11,41 @@ class Form extends React.Component {
   handleOnChange = (label, value) => {
     this.setState({ [label]: value });
   };
+
   handleOnSubmit = (e) => {
     e.preventDefault();
-    this.props.onFormSubmit(this.props.page, this.state);
+    const newShoe = { ...this.props.editing };
+    const el = [...e.target.elements];
+    el.forEach((e) => (newShoe[e.name] = e.value));
+    if (this.props.isCreating) {
+      this.props.onCreate(newShoe);
+    } else {
+      this.props.onSubmit(newShoe);
+    }
   };
   renderInputs() {
-    Object.entries(this.state).map((entry, i) => (
-      <Input key={i} label={entry[0]} value={entry[1]} />
-    ));
+    return Object.entries(this.state).map((entry, i) => {
+      return (
+        <Input
+          key={i}
+          label={entry[0]}
+          value={entry[1]}
+          isCreating={this.props.isCreating}
+          editing={this.props.editing}
+        />
+      );
+    });
   }
   render() {
     return (
       <form onSubmit={this.handleOnSubmit}>
         <h2>
-          {this.props.type === "create"
+          {this.props.isCreating
             ? "Create new shoe"
             : `Edit shoe #${this.props.editing && this.props.editing.id}`}
         </h2>
         {this.renderInputs()}
-        <Button type="submit" text={"Submit"} />
+        <input name="submit" type="submit" value="Make Changes" />
       </form>
     );
   }
