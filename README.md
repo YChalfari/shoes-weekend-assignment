@@ -1,2 +1,5 @@
 # shoes - weekend CRUD/API based exercise
-# shoes-weekend-assignment
+
+## Difficulties
+
+1. Getting inputs to behave as expected
